@@ -1,5 +1,7 @@
 package com.ll;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -7,6 +9,7 @@ public class App {
 	public void run() {
 		Scanner sc = new Scanner(System.in);
 		
+		List<Quotation> quotations = new ArrayList<>();
 		int lastQuotationId = 0;
 
 		System.out.println("== 명언 앱 ==");
@@ -25,7 +28,8 @@ public class App {
 				System.out.print("작가 : ");
 				String writer = sc.nextLine().trim();
 				
-				System.out.println(++lastQuotationId + "번 명언이 등록되었습니다.");
+				quotations.add(new Quotation(++lastQuotationId, quotation, writer));
+				System.out.println(lastQuotationId + "번 명언이 등록되었습니다.");
 			}
 		}
 
