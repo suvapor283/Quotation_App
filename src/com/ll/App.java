@@ -33,6 +33,11 @@ public class App {
 			}
 			
 			else if (cmd.equals("목록")) {
+				if (quotations.isEmpty()) {
+					System.out.println("게시물이 존재하지 않습니다.");
+					continue;
+				}
+				
 				System.out.println("번호	|	작가	|	명언");
 				for(int i = quotations.size()-1; i >= 0; i--) {
 					Quotation quotation = quotations.get(i);
