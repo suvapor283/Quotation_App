@@ -44,6 +44,40 @@ public class App {
 					System.out.printf("%d	|	%s	|	%s\n", quotation.id, quotation.quotation, quotation.writer);
 				}
 			}
+			
+			else if (cmd.startsWith("수정?id=")) {
+				int id = -1;
+
+				try {
+					id = Integer.parseInt(cmd.substring(6));
+				} catch (NumberFormatException e) {
+					System.out.println("명령어를 올바르게 입력해주세요.");
+					continue;
+				}
+
+				Quotation foundQuotation = null;
+
+				for (Quotation quotation : quotations) {
+					if (quotation.id == id) {
+						foundQuotation = quotation;
+						break;
+					}
+				}
+
+				if (foundQuotation == null) {
+					System.out.println(id + "번 게시물은 존재하지 않습니다.");
+					continue;
+				}
+
+				System.out.print("수정할 명언 : ");
+				String quotation = sc.nextLine().trim();
+				System.out.print("수정할 작가 : ");
+				String writer = sc.nextLine().trim();
+				
+				foundQuotation.quotation = quotation;
+				foundQuotation.writer = writer;
+				System.out.println(id + "번 게시물이 수정되었습니다.");
+			}
 
 			else if (cmd.startsWith("삭제?id=")) {
 				int id = -1;
