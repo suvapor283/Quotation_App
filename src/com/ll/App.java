@@ -44,6 +44,20 @@ public class App {
 					System.out.printf("%d	|	%s	|	%s\n", quotation.id, quotation.quotation, quotation.writer);
 				}
 			}
+			
+			else if (cmd.startsWith("삭제?id=")) {
+				int id = -1;
+				
+				try {
+					id = Integer.parseInt(cmd.substring(6));
+				} catch (NumberFormatException e) {
+					System.out.println("명령어를 올바르게 입력해주세요.");
+					continue;
+				}
+				
+				quotations.remove(id);
+				System.out.println(id + "번 게시물이 삭제되었습니다.");
+			}
 		}
 
 		sc.close();
